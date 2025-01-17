@@ -2,7 +2,7 @@ import streamlit as st
 import time
 st.title("My first app")
 
-st.text("This is some text.")
+st.text("This is some text ( st.text).")
 st.code("print('Hello, world!')")
 st.markdown("This is a markdown text.")
 st.latex(r"\LaTeX AbCdeeeeX")
@@ -50,7 +50,7 @@ with st.expander("See more details"):
 # Elements outside the expander
 st.write("This is outside the expander")
 
-tabs = st.tabs(["1st tab", "2nd tab"])
+tabs = st.tabs(["form", "session_with_counter"])
 with tabs[0]:
     st.write("Content inside the first tab")
     # Create a form
@@ -70,3 +70,13 @@ with tabs[0]:
         st.write(f"Age: {age}")
 with tabs[1]:
     st.write("Content inside the second tab")
+    # Initialize a counter in session state
+    if 'counter' not in st.session_state:
+        st.session_state.counter = 0
+
+    # Button to increment the counter
+    if st.button('Increment'):
+        st.session_state.counter += 1
+
+    # Display the counter
+    st.write(f'Counter: {st.session_state.counter}')
